@@ -1,0 +1,447 @@
+#wrapper {
+    min-height: 100%;
+    position: relative;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+#container{
+    margin: 0 auto;
+    display: flow-root;
+    padding-bottom: 85px;
+    /* max-width: 745px; */
+    text-align: center;
+    justify-content: center;
+    padding-top: 39px;
+}
+
+input[type=text], input[type=password],input[type=email],textarea {
+    padding: 20px 20px 20px 20px;
+    border-radius: 4px;
+    border: 1px solid #cecece;
+    outline: none;
+    max-width: 300px;
+    font-size: 17px;
+    color: #6f6f6f;
+    margin-top: 10px;
+    width: 94%;
+}
+
+input[type=text]:hover, input[type=password]:hover,input[type=email]:hover{
+    border:1px solid #0896ff;
+}
+
+input[type=submit] {
+    padding: 14px 28px 14px 28px;
+    border-radius: 4px;
+    border: 1px solid white;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    background: #0896ff;
+    margin-left: 9px;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover{
+    background: #66beff;
+}
+.signout:hover{
+    background:#929292 !important
+}
+
+textarea{font-size: 14px;resize: none;height: 100px;}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+    width: 94%;
+    margin: 0 auto;
+}
+
+
+#notification{
+    width: 97%;
+    margin: 0 auto;
+    border: 1px solid #d4d2d2;
+    line-height: 14px;
+    margin-bottom: 31px;
+    border-radius: 4px;
+    color: #41aeff;
+    font-size: 14px;
+    max-width: 800px;
+    white-space: pre;
+    justify-content: center;
+    align-items: center;
+    /* display: flex; */
+    padding-top: 0px;
+    padding: 18px;
+}
+
+#services{
+    margin:0 auto;
+    min-height: 270px;
+    -webkit-box-shadow: -1px -1px 19px 5px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: -1px -1px 19px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: -1px -1px 19px 5px rgba(0, 0, 0, 0.05);
+    padding: 20px 26px 20px 26px;
+    max-width: 651px;
+    color: #888888;
+    width: 84%;
+    margin-bottom: 33px;
+    min-width: 235px;
+    overflow: hidden;
+
+}
+
+#header{
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name{
+    color: #C97DE5;
+    font-weight: 450;
+    text-transform: uppercase;
+}
+
+.control{
+    float: right;
+}
+
+#header i{
+    font-size: 22px;
+    color: #c3c3c3;
+    padding-left: 12px;
+    cursor: pointer;
+}
+
+#header i:hover{
+    color:black;
+}
+
+#description{
+    text-align: left;
+    font-size: 16px;
+    margin-top: 26px;
+    font-weight: 100;
+    line-height: 20px;
+    min-height: 128px;
+}
+
+#info{
+    margin-top: 39px;
+    display: flex;
+    justify-content: space-between;
+}
+
+li{
+    list-style: none;
+
+}
+#allServices li {
+    max-width: 216px;
+    text-align: left;
+    color: #4a4a4a;
+}
+
+#allServices span{
+    font-size: 16px;
+    color: #a09c9c;
+    text-align: left;
+    font-weight: 100;
+}
+
+@media only screen and (min-width: 651px) {    
+    .name{
+        font-size: 24px;
+    }
+    #allServices li{
+        font-size: 20px;
+        display: grid;
+    }
+}
+
+@media only screen and (max-width: 650px) and (min-width: 570px)  {    
+    .name{
+        font-size: 20px;
+    }
+    #allServices li{
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 650px) {    
+    .name{
+        font-size: 18px;
+        max-width: 170px;
+    }
+    #allServices li{
+        font-size: 16px;
+        display: inline-flex;
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    }
+    #info{
+        display: block ;
+    }
+    i {
+        font-size: 18px !important;
+    }
+    #createService{
+        float: none !important;
+        margin:0 auto !important;
+    }
+    #info{
+        margin-top: 22px;
+    }
+    #services{
+        width: 76%;
+    }
+}
+
+#top{
+    padding: 0 25px 0 25px;
+    width: 100px;
+    margin-bottom: 37px;
+    width: 84%;
+    margin: 0 auto;
+    display: flow-root;
+    max-width: 651px;
+}
+
+#createService{
+    width: 120px;
+    padding: 16px;
+    font-size: 16px;
+    float: right;
+    border-radius: 4px;
+    border: 2px dashed #c97de5;
+    color: #9854af;
+    cursor: pointer;
+}
+
+#createService:hover{
+    background: #dd9ef5;
+    border: 2px dashed #dd9ef5;
+    color: #fff !important;
+}
+
+#clearfix{
+    clear: both;
+    margin-bottom: 40px;
+}
+
+/* Add Tab */
+
+#serviceDetails,#addService h1{
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 20px;
+}
+
+#serviceDetails li{
+    /* width: 300px;
+    width: 80% !important; */
+    padding-bottom: 10px;
+}
+
+#serviceDetails ul{
+    max-width: 349px;
+    width: 100%;
+    margin-left: 33px;
+}
+
+#left{
+    display: inline-block;
+    max-width: 349px;
+}
+
+#serviceDetails span{
+    font-size: 16px;
+    color: #616161;
+    text-align: left;
+    float: left;
+    margin-left: 5px;
+}
+
+.spandesc{
+    margin-top: 28px;
+}
+
+@media only screen and (max-width: 720px) {  
+    #serviceDetails{
+        display: block;
+    }
+    #serviceDetails ul, #serviceDetails li{   
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+    input[type=text], input[type=password],input[type=email],textarea {
+        width: 80%;
+    }
+    #left{
+        margin-bottom: 17px;
+    }
+    #serviceDetails span{
+        margin-left: 14px;
+    }
+    .spandesc{
+        margin-top: 16px;
+    }
+}
+
+.service_name{
+    margin-bottom: 10px;
+}
+
+#addService h1{
+    text-align: left;
+    justify-content: left;
+    /* font-weight: 500; */
+    color: #9854af;
+    justify-content: left;
+    margin: 0 auto;
+    /* margin-bottom: 38px; */
+    max-width: 756px;
+    padding-left: 24px;
+}
+
+
+h2{
+    text-align: left;
+    justify-content: left;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #8f8d90;
+    margin: 0 auto;
+    margin-bottom: 38px;
+    font-size: 16px;
+    max-width: 775px;
+    padding-left: 24px;
+}
+
+#btns{
+    margin: 0 auto;
+    max-width: 870px;
+    display: flow-root;
+    justify-content: space-between;
+    margin-bottom: 78px;
+}
+
+#right{
+    margin-top: 20px;
+    margin: 30px 0 40px 0;
+}
+
+.cancel{
+    background:#cecece !important;
+}
+.cancel:hover{
+    background:#929292 !important;
+}
+
+#serviceAvailability{
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin: 0 auto;
+    font-size: 20px;
+    color: #4c4d4e;
+    border: 1px solid #cecece;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 91%;
+    border-radius: 3px;
+    font-weight: 300 ;
+}
+
+th{
+    font-weight: 300 ;
+}
+
+td {
+    padding: 5px 20px 5px 20px;
+    width: 40px;
+}
+
+.check {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #9a9898;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.ed {
+    background: #DCE2F5;
+    border: #DCE2F5;
+}
+
+@media only screen and (max-width: 720px) {  
+    td{
+        padding: 2px 0px 2px 0px;
+        /* width: 18px; */
+    }
+    table{
+        font-size: 15px;
+        width: 87%;
+    }
+    .check {
+        width: 21px;
+        height: 21px;
+    }
+    #addService h1,#addService h2{
+        text-align: center !important;
+    }
+}
+
+.warning{
+    border:1px solid red !important
+  }
+.warn{
+    color:red !important;
+    border:1px solid red !important;
+    background:transparent !important;
+    padding: 0 !important;
+    padding-top: 8px !important;
+    
+}
+input[type=submit][disabled],input[type=submit][disabled]:hover{
+    cursor: not-allowed;
+}
+.Unavailable{
+    background: #ff6e6e;
+    color: #fff;
+    line-height: 28px;
+    margin-bottom: 13px;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    padding-left: 26px;
+    margin-left: -26px;
+    padding-right: 26px;
+}
+.un{
+    color:#bfbfbf !important
+}
+.dur{
+    display: contents;
+    text-align: left !important;
+    font-size: 20px !important;
+    color: #4a4a4a !important;
+    font-weight: 400 !important;
+}

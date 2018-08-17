@@ -1,0 +1,161 @@
+<div id="popUp" *ngIf="popUpvisible==true">  
+    <div id="content">
+      <i class="fas fa-times" (click)="popUpvisible=false"></i>
+      <h1 *ngIf="tab!=3">Make your booking</h1>
+      <div id="tab1" *ngIf="tab==1">
+          <h2>Personal details</h2>
+          <ul>
+              <li>
+                <span class="input_info">Name </span>
+                <input type="text"  [ngClass]="{'warning' : name_valid==false}" [(ngModel)]="name" (keyup)="validate()">
+              </li>
+              <li>
+                <span class="input_info">Email</span>
+                <input type="text"  [(ngModel)]="email" [ngClass]="{'warning' : email_valid==false}" (keyup)="validate()">
+              </li>
+        
+            </ul>
+            <ul class="second">
+              <li>
+                  <span class="input_info">Phone number</span>
+                  <input type="text"  [(ngModel)]="phone" [ngClass]="{'warning' : phone_valid==false}" (keyup)="validate()">
+                </li>
+                <li (click)="nextTab()">
+                    <div class="next">Next</div> 
+                </li>
+            </ul>
+      </div>
+
+      <div id="tab2" *ngIf="tab==2">
+          <h2>Booking information</h2>
+          <div id="serviceAvailability">
+              <table>
+                  <tbody>
+                  <tr>
+                      <th></th>
+                      <th>MON</th>
+                      <th>TUE </th>
+                      <th>WED</th>
+                      <th>THU</th>
+                      <th>FRI </th>
+                      <th>SAT</th>
+                      <th>SUN</th>
+                  </tr>
+    
+                  <tr *ngFor="let i of [7,8,9,10,11,12,13,14,15,16];">
+                      <td>
+                          <span *ngIf="i<10">0</span>{{i}}:00
+                      </td>
+                      <td>
+                          <span class="check" [ngClass]="{'ed':createSer.program['mon'][i]==1,'ed2':createSer.program['mon'][i]==2}" (click)="mark('mon',i)" ></span>
+                      </td>
+                      <td>
+                          <span class="check" [ngClass]="{'ed':createSer.program['tue'][i]==1,'ed2':createSer.program['tue'][i]==2}" (click)="mark('tue',i)"></span>
+                      </td>
+                      <td>
+                          <span class="check" [ngClass]="{'ed':createSer.program['wed'][i]==1,'ed2':createSer.program['wed'][i]==2}" (click)="mark('wed',i)"></span>
+                      </td>
+                      <td>
+                          <span class="check" [ngClass]="{'ed':createSer.program['thu'][i]==1,'ed2':createSer.program['thu'][i]==2}" (click)="mark('thu',i)"></span>
+                      </td>
+                      <td>
+                          <span class="check" [ngClass]="{'ed':createSer.program['fri'][i]==1,'ed2':createSer.program['fri'][i]==2}" (click)="mark('fri',i)"></span>
+                      </td>
+                      <td>
+                          <span class="check" [ngClass]="{'ed':createSer.program['sat'][i]==1,'ed2':createSer.program['sat'][i]==2}" (click)="mark('sat',i)"></span>
+                      </td>
+                      <td>
+                          <span class="check" [ngClass]="{'ed':createSer.program['sun'][i]==1,'ed2':createSer.program['sun'][i]==2}" (click)="mark('sun',i)"></span>
+                      </td>
+                  </tr>
+    
+              </tbody></table>
+          </div>
+            <ul class="second">
+              <li>
+                  <div class="back" (click)="tab=1">back</div> 
+                </li>
+                <li (click)="sendBooking()">
+                    <div class="next">Send booking</div> 
+                </li>
+            </ul>
+      </div>
+
+      <div id="tab3" *ngIf="tab==3">
+        <p style="display: flex;"><i class="fas fa-envelope"></i></p>
+        <h1>Your request was sent!</h1>
+        <p>
+            In a couple of seconds a confirmation email will be sent to your email adress<br> with all details for your reservation.Thank you for using our services!
+        </p>  
+
+        <div class="next" id="close" (click)="popUpvisible=false;tab=1;reset()">Close</div> 
+         </div>
+
+    </div>
+  </div>
+<div id="wrapper">
+  <!-- <app-page-header></app-page-header> -->
+  <div id="container">
+    <div id="notification" *ngIf="errors>0" [ngClass]="{'warn' : valid==false}">
+      {{notif_txt}}
+    </div>
+    <div id="notification" *ngIf="succes==true" >
+        {{notif_txt}}
+    </div>
+
+    <div id="companies" *ngIf="companies==true">
+        <div id="comp" *ngFor="let company of allUsers ;let i = index;" [hidden]="company.companyName.length<1" (click)="displayBookings(company.id,company.companyName,company.logo,company.companyDescription)">
+            <img alt="" src={{company.logo}} [ngClass]="{'ass' : company.logo=='https://d2z1ksq6nul58p.cloudfront.net/sites/default/files/logo-white.svg'}">
+            <h3>{{company.companyName}}</h3>
+        </div>       
+    </div>
+    <div id="allServices" *ngIf="addTab == false && companies==false">
+    <div class="backtocomapny"><div style="cursor:pointer;" (click)="companies=true"><i class="fas fa-chevron-left"></i><input type="submit" name="submit" id="bookNowbtn" value="Back"></div></div>
+      <div id="top">
+        <img src={{comp_profile}} [ngClass]="{'ass' : comp_profile=='https://d2z1ksq6nul58p.cloudfront.net/sites/default/files/logo-white.svg'}">
+        <div id="description">
+          <div class="name" id="companyName">{{comp_name}}</div>
+          {{comp_desc}}
+    
+        </div>
+      </div>
+      <div id="clearfix"></div>
+     <div *ngIf="servicesnr<1" id="noservices">
+        <i class="fas fa-search" style="font-size:20px;margin-right: 10px;color:#9c9999"></i> No Services yet
+        </div>
+
+      <div id="services" *ngFor="let service of allServices ;let i = index;" [hidden]="service.available_spaces<=0">
+
+        <div id="header" >
+            <div class="name">{{service.name}}</div>
+        </div>
+        <div id="description">{{service.description}}</div>
+        
+        <ul id="info">
+          <li style=" text-transform: capitalize;">
+            {{getAvailability(service.program)}}
+            <span class="desc">Availability</span>
+          </li>
+          <li>
+            {{service.available_spaces}} available
+            <span class="desc">Spaces</span>
+          </li>
+          <li>
+            {{service.duration}}h
+            <span class="desc">Duration</span>
+          </li>
+          <li>
+            {{service.price}} Lei
+            <span class="desc">Price</span>
+          </li>
+        </ul>
+        
+        <div id="btnarea"><input type="submit" name="submit" id="bookNowbtn" value="BOOK NOW"  (click)="book(service)"></div>
+      </div>
+
+      
+    </div>
+    
+  </div>
+  <app-page-footer></app-page-footer>
+</div><div id="ml" routerLink="/dashboard"> Members area</div>

@@ -1,0 +1,115 @@
+<div id="wrapper">
+    <app-page-header></app-page-header>
+    <div id="container">
+      
+     <h1 *ngIf="bookingsnr>0">Weekly calendar</h1>
+
+
+      <div id="bookings" *ngIf="bookingsnr>0">
+          <h2>Monday</h2> 
+          <table>
+              <div id="nobook" *ngIf="mon.length<1">
+                  No booking on this day
+                </div>
+              <tr *ngFor="let booking of fri ;let i = index;">
+                  <td>{{booking.name}}</td>
+                  <td style="text-transform: none;"> {{booking.email}}</td>
+                  <td> {{booking.phone}}</td>
+                  <td> {{booking.available}}</td>
+                  <td> {{booking.serviceName}}</td>
+              </tr>       
+          </table>
+
+          <h2>Tuesday</h2> 
+          <table>
+            <div id="nobook" *ngIf="tue.length<1">
+              No booking on this day
+            </div>
+              <tr *ngFor="let booking of tue ;let i = index;">
+                  <td>{{booking.name}}</td>
+                  <td style="text-transform: none;"> {{booking.email}}</td>
+                  <td> {{booking.phone}}</td>
+                  <td> {{booking.available}}</td>
+                  <td> {{booking.serviceName}}</td>
+              </tr>       
+          </table>
+
+          <h2>Wednesday</h2> 
+          <table>
+              <div id="nobook" *ngIf="wed.length<1">
+                  No booking on this day
+                </div>
+              <tr *ngFor="let booking of wed ;let i = index;">
+                  <td>{{booking.name}}</td>
+                  <td style="text-transform: none;"> {{booking.email}}</td>
+                  <td> {{booking.phone}}</td>
+                  <td> {{booking.available}}</td>
+                  <td> {{booking.serviceName}}</td>
+              </tr>       
+          </table>
+
+          <h2>Thursday</h2> 
+          <table>
+              <div id="nobook" *ngIf="thu.length<1">
+                  No booking on this day
+                </div>
+              <tr *ngFor="let booking of thu ;let i = index;">
+                  <td>{{booking.name}}</td>
+                  <td style="text-transform: none;"> {{booking.email}}</td>
+                  <td> {{booking.phone}}</td>
+                  <td> {{booking.available}}</td>
+                  <td> {{booking.serviceName}}</td>
+              </tr>       
+          </table>
+
+          <h2>Friday</h2> 
+          <table>
+              <div id="nobook" *ngIf="fri.length<1">
+                  No booking on this day
+                </div>
+              <tr *ngFor="let booking of fri ;let i = index;">
+                  <td>{{booking.name}}</td>
+                  <td style="text-transform: none;"> {{booking.email}}</td>
+                  <td> {{booking.phone}}</td>
+                  <td> {{booking.available}}</td>
+                  <td> {{booking.serviceName}}</td>
+              </tr>       
+          </table>
+
+          <h2>Saturday</h2> 
+          <table>
+              <div id="nobook" *ngIf="sat.length<1">
+                  No booking on this day
+                </div>
+              <tr *ngFor="let booking of sat ;let i = index;">
+                  <td>{{booking.name}}</td>
+                  <td style="text-transform: none;"> {{booking.email}}</td>
+                  <td> {{booking.phone}}</td>
+                  <td> {{booking.available}}</td>
+                  <td> {{booking.serviceName}}</td>
+              </tr>       
+          </table>
+
+          <h2>Sunday</h2> 
+          <table>
+              <div id="nobook" *ngIf="sun.length<1">
+                  No booking on this day
+                </div>
+              <tr *ngFor="let booking of sun ;let i = index;">
+                  <td>{{booking.name}}</td>
+                  <td style="text-transform: none;"> {{booking.email}}</td>
+                  <td> {{booking.phone}}</td>
+                  <td> {{booking.available}}</td>
+                  <td> {{booking.serviceName}}</td>
+              </tr>       
+          </table>
+
+      </div>
+    </div>
+
+    <div *ngIf="bookingsnr<1" id="noservices"><i class="fas fa-search" style="font-size:20px;margin-right: 10px;color:#9c9999"></i> No Bookings yet</div>
+  
+    <app-page-footer></app-page-footer>
+    
+  </div>
+  

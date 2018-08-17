@@ -1,0 +1,26 @@
+<div id="wrapper">
+  <app-page-header></app-page-header>
+  <div id="container">
+    <select *ngIf="servicesnr>0" class="select_service" [(ngModel)]=selected_service  (change)="getBookings(selected_service)"> 
+        <option  *ngFor="let service of allServices ;let i = index;" value={{service.id}} (click)="getBookings(service.id)">{{service.name}}</option>
+    </select>
+    <i class="fas fa-chevron-down" (click)="handler()" *ngIf="servicesnr>0"></i>
+
+    <div id="bookings" *ngIf="selected_service!='Service name' && bookingsnr>0">
+        <table>
+            <tr class="desc"><th>Name</th><th>Email</th><th>Phone No</th><th>Availability</th></tr>  
+            <tr *ngFor="let booking of allBookings ;let i = index;">
+                <td>{{booking.name}}</td>
+                <td style="text-transform: none;"> {{booking.email}}</td>
+                <td> {{booking.phone}}</td>
+                <td> {{booking.available}}</td>
+            </tr>       
+        </table>
+    </div>
+  </div>
+  <div *ngIf="selected_service!='Service name' && bookingsnr<1" id="noservices"><i class="fas fa-search" style="font-size:20px;margin-right: 10px;color:#9c9999"></i> No Bookings yet</div>
+
+  <div *ngIf="servicesnr<1" id="noservices"><i class="fas fa-search" style="font-size:20px;margin-right: 10px;color:#9c9999"></i> No Services yet</div>
+  <app-page-footer></app-page-footer>
+  
+</div>

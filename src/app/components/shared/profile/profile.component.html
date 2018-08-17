@@ -1,0 +1,34 @@
+<div id="wrapper">
+  <app-page-header></app-page-header>
+  <div id="container">
+    <div id="notification" *ngIf=notif_on>
+      Profile Updated!
+    </div>
+    <div id="profilePic">
+        <div class="profile_c">
+            <br>
+              <img src={{logUser.logo}} alt="" [ngClass]="{'ass' : logUser.logo=='https://d2z1ksq6nul58p.cloudfront.net/sites/default/files/logo-white.svg'}" >
+            <br>
+            <span class="input_info">Company logo</span>
+            <input type="text" name="company_name" placeholder="https://.." value={{logUser.logo}} [(ngModel)]="logUser.logo">
+        </div>
+    </div>
+    <ul>
+      <li>
+          <span class="input_info">Company name </span>
+          <br>
+          <input type="text" name="company_name" value={{logUser.companyName}} [(ngModel)]="logUser.companyName">
+      </li>
+      <li>
+          <span class="input_info">Company description</span>
+          <br>
+          <textarea name="company_description" class="company_description" form="usrform" placeholder="Enter text here..." value={{logUser.companyDescription}} [(ngModel)]="logUser.companyDescription"></textarea>
+      </li>
+      <li class="btns">
+          <input type="submit" name="submit" value="Sign out" class="signout" (click)="logOut()">
+          <input type="submit" name="submit" value="Save" (click)="save()">
+      </li>
+  </ul>
+  </div>
+  <app-page-footer></app-page-footer>
+</div>

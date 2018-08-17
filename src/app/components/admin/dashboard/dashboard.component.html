@@ -1,0 +1,124 @@
+<div id="wrapper">
+  <app-page-header></app-page-header>
+  <div id="container">
+    <div id="notification" *ngIf="errors>0" [ngClass]="{'warn' : valid==false}">
+      {{notif_txt}}
+    </div>
+    <div id="notification" *ngIf="succes==true" >
+        {{notif_txt}}
+    </div>
+    <div id="addService" *ngIf="addTab == true">
+      <div id="btns">
+        <h1 *ngIf="edit==false">Add new service</h1>
+        <h1 *ngIf="edit==true">Edit service</h1>
+      </div>
+      <h2>Service details</h2>
+      <div id="serviceDetails">
+        <div id="left">
+          <span class="input_info">Service name </span>
+          <input type="text" name="service_name" [ngClass]="{'warning' : name.length<3 && name!=''}" [(ngModel)]="name" (keyup)="createService()">
+          <span class="input_info" class="spandesc">Service description</span>
+          <textarea name="service_description" class="service_description" placeholder="Enter text here..." [(ngModel)]="description"></textarea>
+        </div>
+        <ul>
+          <li>
+            <span class="input_info">Service duration </span>
+            <input type="text" name="service_duration" [ngClass]="{'warning' : !num(duration) && duration!=''}" [(ngModel)]="duration" (keyup)="createService()">
+          </li>
+          <li>
+            <span class="input_info">Spaces</span>
+            <input type="text" name="serivce_spaces" [(ngModel)]="spaces" [ngClass]="{'warning' : !num(spaces) && spaces!=''}" readonly>
+          </li>
+          <li>
+            <span class="input_info">Price</span>
+            <input type="text" name="service_prices" [(ngModel)]="price" [ngClass]="{'warning' : !num(price) && price!=''}" (keyup)="createService()">
+          </li>
+        </ul>
+      </div>
+      <h2 style="margin-top: 80px">Service Availability</h2>
+      <div id="serviceAvailability">
+          <table>
+              <tbody>
+              <tr>
+                  <th></th>
+                  <th>MON</th>
+                  <th>TUE </th>
+                  <th>WED</th>
+                  <th>THU</th>
+                  <th>FRI </th>
+                  <th>SAT</th>
+                  <th>SUN</th>
+              </tr>
+
+              <tr *ngFor="let i of [7,8,9,10,11,12,13,14,15,16];">
+                  <td>
+                      <span *ngIf="i<10">0</span>{{i}}:00
+                  </td>
+                  <td>
+                      <span class="check" [ngClass]="{'ed':createSer.program['mon'][i]==1}" (click)="mark('mon',i)" ></span>
+                  </td>
+                  <td>
+                      <span class="check" [ngClass]="{'ed':createSer.program['tue'][i]==1}" (click)="mark('tue',i)"></span>
+                  </td>
+                  <td>
+                      <span class="check" [ngClass]="{'ed':createSer.program['wed'][i]==1}" (click)="mark('wed',i)"></span>
+                  </td>
+                  <td>
+                      <span class="check" [ngClass]="{'ed':createSer.program['thu'][i]==1}" (click)="mark('thu',i)"></span>
+                  </td>
+                  <td>
+                      <span class="check" [ngClass]="{'ed':createSer.program['fri'][i]==1}" (click)="mark('fri',i)"></span>
+                  </td>
+                  <td>
+                      <span class="check" [ngClass]="{'ed':createSer.program['sat'][i]==1}" (click)="mark('sat',i)"></span>
+                  </td>
+                  <td>
+                      <span class="check" [ngClass]="{'ed':createSer.program['sun'][i]==1}" (click)="mark('sun',i)"></span>
+                  </td>
+              </tr>
+
+          </tbody></table>
+      </div>
+    </div>
+
+    <div id="allServices" *ngIf="addTab == false">
+      <div id="top"><div id="createService"  (click)="edit=false;reset();addTab=true; ">New service</div></div>
+      <div id="clearfix"></div>
+      <div id="services" *ngFor="let service of allServices ;let i = index;">
+        <div class="Unavailable" *ngIf="getAvailability(service.program)=='Unavailable'">No reservations available!</div>
+        <div id="header">
+            <div class="name" [ngClass]="{'un' : getAvailability(service.program)=='Unavailable'}">{{service.name}}</div>
+            <span class="control">
+                <i class="far fa-edit" (click)="editService(service)"></i>
+                <i class="fas fa-trash-alt" (click)="deleteService(service,i)"></i>
+            </span>
+        </div>
+        <div id="description" [ngClass]="{'un' : getAvailability(service.program)=='Unavailable'}">{{service.description}}</div>
+        <ul id="info">
+          <li style=" text-transform: capitalize;" [ngClass]="{'un' : getAvailability(service.program)=='Unavailable'}">
+            {{getAvailability(service.program)}}
+            <span class="desc">Availability</span>
+          </li>
+          <li [ngClass]="{'un' : getAvailability(service.program)=='Unavailable'}" >
+            {{service.available_spaces}} available
+            <span class="desc">Spaces</span>
+          </li>
+          <li [ngClass]="{'un' : getAvailability(service.program)=='Unavailable'}">
+            {{service.duration}} <span class="dur" *ngIf="service.duration>9">min</span><span class="dur"  *ngIf="service.duration<10">h</span>
+            <span class="desc">Duration</span>
+          </li>
+          <li [ngClass]="{'un' : getAvailability(service.program)=='Unavailable'}">
+            {{service.price}} Lei
+            <span class="desc">Price</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="right" *ngIf="addTab == true">
+        <input type="submit" name="submit" value="Save" class="save" (click)="submit()" [disabled]="!valid" *ngIf="edit==true">
+        <input type="submit" name="submit" value="Create" class="save" (click)="submit()" [disabled]="!valid" *ngIf="edit==false">
+        <input type="submit" name="submit" value="Cancel" class="cancel" (click)="addTab=false;edit=false">
+    </div>
+  </div>
+  <app-page-footer></app-page-footer>
+</div>

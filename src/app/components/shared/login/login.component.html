@@ -1,0 +1,55 @@
+<div id="wrapper">
+  <div id="container">
+    <div id="shadow">
+    <form (ngSubmit)="formSubmit($event)" name="myForm">
+        <div class="notif err" *ngIf="notif_msg.length>0 && page!='login'">
+          <ul>
+              <li *ngFor="let notif of notif_msg;let i = index" [ngClass]="{'clear' : notif=='Your Name must contain :'||notif=='Password must contain :'} " >{{notif}}</li>
+          </ul>
+        </div>
+        <div class="notif success" *ngIf="success_msg==true" >
+          <p>Your account was created, now you can log in.</p>
+        </div>
+        <div [ngClass]="{'err2' : recover_msg.indexOf('invalid') > -1}" class="notif success" *ngIf="recover_msg.length>2 && password_valid==true" >
+          <p>{{recover_msg}}</p>
+        </div>
+        <div class="notif err" *ngIf="login_failed_msg!='' && page=='login'">
+            <p>{{login_failed_msg}}</p>
+        </div>
+      <ul class="login">
+        <li>
+          <img src="assets/logo.png" alt="" class="logo" (click)="getUser()"><br>
+          <h1>Booking App</h1>
+        </li>
+        <li *ngIf="page=='register'">
+          <input type="text" name="name" [ngClass]="{'warning' : name_valid==false}" placeholder="Your name " id="username" [(ngModel)]='Name' (keyup)="validate()" [ngClass]="{'warning' : name_valid==false}" autocomplete="off">
+        </li>
+        <li>
+          <input *ngIf="page!='changePass'" type="email" [ngClass]="{'warning' : email_valid==false}" name="email" placeholder="Email adress " id="email" [(ngModel)]='Email' (keyup)="validate()" autocomplete="off">
+        </li>
+        <li class="pass" *ngIf="page!='recover'">
+          <input type={{type}} name="password" placeholder="Password" id="password" [(ngModel)]='Password' (keyup)="validate()" [ngClass]="{'warning' : password_valid==false}" autocomplete="off">
+          <i class={{eyeclass}} (click)="eye()"></i>
+        </li>
+        <li>
+          <input type="submit" name="submit" value="Log In" *ngIf="page=='login'" [disabled]="(Password.length<1 || Email.length<1) || password_valid==false || email_valid==false">
+          <input type="submit" name="submit" value="Register" *ngIf="page=='register'" [disabled]="(Password.length<1 || Email.length<1 || Name.length<1) || name_valid==false || password_valid==false || email_valid==false">
+          <input type="submit" name="submit" value="Recover" *ngIf="page=='recover'" [disabled]="(Email.length<1) || email_valid==false">
+          <input type="submit" name="submit" value="Change" *ngIf="page=='changePass'" [disabled]="(Password.length<1 ) || password_valid==false ">
+     
+        </li>
+        <li class="reg" *ngIf="page=='login'">
+          <a (click)="page='register';reset()">Register</a>
+          <a  (click)="page='recover';reset()">Forgot your password?</a>
+        </li>
+        <li *ngIf="page=='register'" >
+          <a  (click)="page='login';reset()">You already have an account?</a>
+        </li>
+        <li *ngIf="page=='recover'" >
+          <a  (click)="page='login';reset()">Back</a>
+        </li>
+      </ul>
+    </form>
+  </div>
+  </div>
+</div>

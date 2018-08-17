@@ -1,0 +1,30 @@
+npm WARN deprecated uws@9.148.0: stop using this version
+/home/ioan/.nvm/versions/node/v8.11.3/bin/ros -> /home/ioan/.nvm/versions/node/v8.11.3/lib/node_modules/realm-object-server/dist/cli.js
+
+> diskusage@0.2.4 install /home/ioan/.nvm/versions/node/v8.11.3/lib/node_modules/realm-object-server/node_modules/diskusage
+> node-gyp rebuild
+
+make: Entering directory '/home/ioan/.nvm/versions/node/v8.11.3/lib/node_modules/realm-object-server/node_modules/diskusage/build'
+  CXX(target) Release/obj.target/diskusage/src/main.o
+  CXX(target) Release/obj.target/diskusage/src/diskusage_posix.o
+  SOLINK_MODULE(target) Release/obj.target/diskusage.node
+  COPY Release/diskusage.node
+make: Leaving directory '/home/ioan/.nvm/versions/node/v8.11.3/lib/node_modules/realm-object-server/node_modules/diskusage/build'
+
+> realm@2.14.0 install /home/ioan/.nvm/versions/node/v8.11.3/lib/node_modules/realm-object-server/node_modules/realm
+> node-pre-gyp install --fallback-to-build
+
+[realm] Success: "/home/ioan/.nvm/versions/node/v8.11.3/lib/node_modules/realm-object-server/node_modules/realm/compiled/node-v57_linux_x64/realm.node" is installed via remote
+
+> uws@9.148.0 install /home/ioan/.nvm/versions/node/v8.11.3/lib/node_modules/realm-object-server/node_modules/uws
+> node-gyp rebuild > build_log.txt 2>&1 || exit 0
+
++ realm-object-server@3.9.5
+added 364 packages from 342 contributors in 62.985s
+
+┌────────────────────────────────────────────────────────┐
+│                npm update check failed                 │
+│          Try running with sudo or get access           │
+│          to the local update config store via          │
+│ sudo chown -R $USER:$(id -gn $USER) /home/ioan/.config │
+└────────────────────────────────────────────────────────┘

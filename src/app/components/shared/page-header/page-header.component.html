@@ -1,0 +1,15 @@
+<div id="navbar">
+  <a (click)="toggle()" class="menubtn">
+    <i class="fas fa-bars"></i>
+  </a>
+  <div id="logo">
+      <img src="assets/logo.png" class="logoPic">Booking App
+  </div>
+  <ul class="pages" id="right">
+    <a routerLink="/dashboard"><li [ngClass]="{'active': currentRoute=='/dashboard'}">DASHSBOARD</li></a>
+    <a routerLink="/bookings"><li [ngClass]="{'active': currentRoute=='/bookings'}">BOOKING </li></a>
+    <a routerLink="/calendar"><li [ngClass]="{'active': currentRoute=='/calendar'}">CALENDAR</li></a>
+    <a routerLink="/profile"><li [ngClass]="{'active': currentRoute=='/profile'}">PROFILE</li></a>
+  </ul>
+
+</div>

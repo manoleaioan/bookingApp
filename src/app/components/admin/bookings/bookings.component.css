@@ -1,0 +1,145 @@
+#wrapper {
+    min-height: 100%;
+    position: relative;
+    margin: 0 auto;
+
+    min-width: 357px;
+}
+
+#container{
+    margin: 0 auto;
+    display: flow-root;
+    padding-bottom: 85px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 39px;
+
+}
+
+input[type=text], input[type=password],input[type=email],textarea {
+    padding: 20px 20px 20px 20px;
+    border-radius: 4px;
+    border: 1px solid #cecece;
+    outline: none;
+
+    font-size: 17px;
+    color: #6f6f6f;
+    margin-top: 10px;
+
+}
+
+input[type=text]:hover, input[type=password]:hover,input[type=email]:hover{
+    border:1px solid #0896ff;
+}
+
+input[type=submit] {
+    padding: 16px 28px 14px 28px;
+    border-radius: 4px;
+    border: 1px solid white;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    background: #C97DE5;
+    margin-left: 9px;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type=submit]:hover{
+    background: #dda3f3;
+}
+.signout:hover{
+    background:#929292 !important
+}
+
+.select_service {
+    margin-bottom: 30px;
+    font-weight: 500;
+    /* width: 220px; */
+    height: 50px;
+    padding: 14px;
+    border: 1px solid #C97DE5;
+    border-radius: 3px;
+    overflow: hidden;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    color: #8e4ba7;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-left: -34px;
+    padding-right: 35px;
+ }
+
+i{
+    margin-left: -30px;
+    color: #c97de5;
+    font-size: 14px;
+}
+
+#bookings{
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 1001px;
+}
+
+table{
+    margin: 0 auto;
+    width: 100%;
+    border-spacing:0;
+    color: #5d5959;
+    text-transform: capitalize;
+}
+
+th{
+    font-weight: normal;
+}
+
+table .desc{
+    font-size:14px;
+    color: #8e4ba7;
+    height: 30px;
+    background:white;
+}
+
+table tr{
+    line-height: 44px;
+
+}
+
+tr:nth-child(4n+2) {
+    background:#F8EEFB !important;
+}
+
+tr:nth-child(2n+3) {
+    background:white !important;
+}
+
+tr:nth-child(5n+4) {
+    background:#E7EBF7 !important;
+} 
+
+@media only screen and (min-width: 700px) {    
+    th{
+        font-size: 18px;
+    }
+    tr{
+        font-size: 17px;
+        font-weight: 100;
+    }
+
+}
+#noservices{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 900px;
+    /* border: 1px solid red; */
+    text-align: center;
+    font-size: 22px;
+    font-weight: 100;
+    color: #9c9999;
+
+}
